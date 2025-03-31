@@ -3,17 +3,16 @@ package br.tec.abrindoportas.servidorpublicodbweb.controller;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RestController;
-
 import br.tec.abrindoportas.servidorpublicodbweb.entity.ServidorPublicoEntity;
 import br.tec.abrindoportas.servidorpublicodbweb.service.ServidorPublicoService;
 
-@RestController
+@Controller
 public class ServidorPublicoController {
 	private ServidorPublicoService servidorPublicoService;
 	
@@ -32,8 +31,8 @@ public class ServidorPublicoController {
 	  @GetMapping("/listarServidor/{matricula}")
 	  public String listarServidor(@PathVariable long matricula, Model model)
 	  {    
-	    model.addAttribute("servidorpublico", servidorPublicoService.listByMatricula(matricula));
-	    return "servidorPublicoEntities";
+	    model.addAttribute("servidoresPublico", servidorPublicoService.listByMatricula(matricula).get());
+	    return "servidoresPublico";
 	  }
 
 	  @GetMapping("/excluirServidorPublico/{matricula}")

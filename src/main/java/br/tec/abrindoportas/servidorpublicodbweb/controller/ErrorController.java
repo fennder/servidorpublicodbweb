@@ -1,6 +1,5 @@
 package br.tec.abrindoportas.servidorpublicodbweb.controller;
 
-import org.springframework.boot.web.servlet.error.ErrorController;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -9,7 +8,7 @@ import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-public class ErroController implements ErrorController{
+public class ErrorController implements org.springframework.boot.web.servlet.error.ErrorController{
   
   @RequestMapping("/error")
   public String handleError(HttpServletRequest request) {
@@ -20,9 +19,9 @@ public class ErroController implements ErrorController{
       Integer statusCode = Integer.valueOf(status.toString());
 
       if (statusCode == HttpStatus.NOT_FOUND.value()) {
-        return "404";
+        return "/erro/404";
       }else if (statusCode == HttpStatus.INTERNAL_SERVER_ERROR.value()) {
-        return "500";
+        return "/erro/500";
       }
     }
 
