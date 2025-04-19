@@ -15,12 +15,12 @@
     <div class="jumbotron">
         <h3>Listagem dos Servidores Públicos</h3>
         <!-- Verifica se a lista está vazia -->
-		<th:block th:if="${#lists.isEmpty(servidorespublicos)}">
+		<th:block th:if="${#lists.isEmpty(servidoresPublicos)}">
    			<p>Não há servidores públicos cadastrados</p>
 		</th:block>
 
 		<!-- Caso a lista não esteja vazia, mostra os servidores -->
-		<th:block th:if="${not #lists.isEmpty(servidorespublicos)}">
+		<th:block th:if="${not #lists.isEmpty(servidoresPublicos)}">
    		<table class="table table-striped">      
 		    <thead class="thead-dark">
 		    <tr>
@@ -34,20 +34,21 @@
 		    </tr>
 		    </thead>
 		    <tbody>
-		    <tr th:each="servidor : ${servidorespublicos}">
-		        <td><img th:src="${servidor.foto}" width="75px" height="75px" /></td>
+		    <tr th:each="servidor : ${servidoresPublicos}">
+		        <!--td><img th:src="${servidor.foto}" width="75px" height="75px" /></td-->
 		        <td th:text="${servidor.nome}"></td>
-		        <td th:text="${servidor.cargo}"></td>
+		        <!--td th:text="${servidor.cargo}"></td-->
 		        <td th:text="${servidor.orgao}"></td>
 		        <td th:text="${servidor.lotacao}"></td>
 		        <td th:text="${servidor.email}"></td>
-		        <td>
-		          <div class="btn-group" role="group" aria-label="Ações">
-		        	<a th:href="@{'/listaServidor/' + ${servidor.matricula}}" class="btn btn-primary">Detalhar</a>
-		        	<a th:href="@{'/formEditarServidor/' + ${servidor.matricula}}" class="btn btn-secondary">Alterar</a>
-		        	<a th:href="@{'/exclusaoServidor/' + ${servidor.matricula}}" class="btn btn-danger">Excluir</a>
-		          </div> 
-		        </td>
+				<td>
+				  <div class="btn-group" role="group" aria-label="Ações">
+					<a th:href="@{'/listarServidor/' + ${servidor.matricula}}" class="btn btn-primary">Detalhar</a>
+					<a th:href="@{'/formularioEditarServidor/' + ${servidor.matricula}}" class="btn btn-secondary">Alterar</a>
+					<a th:href="@{'/excluirServidor/' + ${servidor.matricula}}" class="btn btn-danger" 
+					th:onclick="'return confirm(\'Tem certeza que deseja excluir o servidor: ' + ${servidor.nome} + '?\')'">Excluir</a>
+				  </div> 
+				</td>
 		    </tr>
 		    </tbody>
 </table>

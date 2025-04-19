@@ -11,6 +11,4 @@ public interface ServidorPublicoService {
   void save(ServidorPublicoEntity seridorPublicoEntity);
   void update(ServidorPublicoEntity seridorPublicoEntity);
   void delete(long matricula);
-  
 }
-

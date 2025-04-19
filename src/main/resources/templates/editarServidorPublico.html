@@ -10,11 +10,11 @@
 </head>
 <body>
 <div class="container">
-    <div th:insert="fragments/navbar.html"> </div>
+    <div th:insert="~{fragments/navbar.html}"> </div>
 
     <div class="jumbotron">
         <h2>Editar Servidor Público</h2>
-		<form th:object="${servidorpublico}" th:action="@{'/edicaoServidor/' + ${matricula}}" method="post">
+		<form th:object="${servidoresPublicos}" th:action="@{'/editarServidor/' + ${matricula}}" method="post">
          <div class="form-group">
             <label for="nome">Nome:</label>
             <input type="text" id="nome" name="nome" th:field="*{nome}" class="form-control" required>
